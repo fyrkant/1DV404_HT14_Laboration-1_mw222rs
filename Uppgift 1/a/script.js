@@ -5,26 +5,20 @@ window.onload = function(){
 	var aCounter = function(str){
 	    var capital = 0;
 	    var lowercase = 0;
+			
+		var arrayed = str.split("");
 		
-		if (str === "") {
-			throw new Error("Oj här gick nått fel! Glömde du att skriva något?");
-		}
-		else {
+		arrayed.map(function(item, index, array){
 			
-			var arrayed = str.split("");
-			
-			var mapArrayed = arrayed.map(function(item, index, array){
-				
-				if (item === "A") {
-					capital += 1;
-				}
-				if (item === "a") {
-					lowercase += 1;
-				}
-			});
-			
-			return "Antal A: " + capital + ", antal a: " + lowercase + ".";
-		}
+			if (item === "A") {
+				capital += 1;
+			}
+			if (item === "a") {
+				lowercase += 1;
+			}
+		});
+		
+		return "Antal A: " + capital + ", antal a: " + lowercase + ".";
 	};
 	
 	var p = document.querySelector("#value");

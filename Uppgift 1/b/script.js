@@ -9,7 +9,7 @@ window.onload = function(){
 			
 		var arrayed = str.split("");
 		
-		var mapArrayed = arrayed.map(function(item, index, array){
+		arrayed.map(function(item, index, array){
 			
 			if (+item === 0) {
 				zeros += 1;
