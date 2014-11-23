@@ -1,27 +1,27 @@
 "use strict";
 
 window.onload = function(){
-
-	var aCounter = function(str){
-	    var capital = 0;
-	    var lowercase = 0;
-			
-		var arrayed = str.split("");
-		
-		var mapArrayed = arrayed.map(function(item, index, array){
-			
-			if (item === "A") {
-				capital += 1;
-			}
-			if (item === "a") {
-				lowercase += 1;
-			}
-			
-			// return (item === item.toUpperCase()) ? item.toLowerCase() : item.toUpperCase();
-		});
-		
-		return "Antal A: " + capital + ", antal a: " + lowercase;
+	var count = 0;
+	var lastNumber = 0;
+	var biggestNumber = 0;
+	var secondBiggestNumber = 0;
 	
+
+	var secondLargest = function(str){
+		var submittedNumber = +str;
+		while (count < 9){
+			if (submittedNumber > biggestNumber) {
+				secondBiggestNumber = biggestNumber;
+				biggestNumber = submittedNumber;
+			}
+			else {
+				secondBiggestNumber = (lastNumber > secondBiggestNumber) ? lastNumber : secondBiggestNumber;
+				lastNumber = submittedNumber;
+			}
+			count += 1;
+			return [false, "Mata in " + (10 - count) + " nummer till."];
+		}
+		return [true, "Det näst största numret är: " + secondBiggestNumber];
 	};
 	
 	var p = document.querySelector("#value");
@@ -30,7 +30,11 @@ window.onload = function(){
 
 	submit.addEventListener("click", function(e){
 		e.preventDefault(); 
-			var answer = aCounter(input.value); 
-			p.innerHTML = answer;
+			var answer = secondLargest(input.value); 
+			p.innerHTML = answer[1];
+			
+			if(answer[0] === true){
+			submit.disabled = true;
+		}
 	});
 };
