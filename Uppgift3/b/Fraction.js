@@ -6,8 +6,7 @@ function Fraction(T, N){
     if (this._N === 0) {
         throw "Nämnaren kan inte vara 0 (noll).";
     }
-    
-    
+   
     Object.defineProperty(this, "getNumerator", {
         get: function(){
             return this._T;
@@ -62,4 +61,5 @@ console.log("getNumerator: " + myFraction.getNumerator);
 console.log("getDenominator: " + myFraction.getDenominator);
 console.log("toString: " + myFraction.toString());
 console.log(myFraction.isEqualTo(otherFraction));
+myFraction.multiply(otherFraction);
 console.log(myFraction);
