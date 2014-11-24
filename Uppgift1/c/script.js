@@ -2,9 +2,8 @@
 
 window.onload = function(){
 	var count = 0;
-	var lastNumber = 0;
-	var biggestNumber = 0;
-	var secondBiggestNumber = 0;
+	var biggestNumber = (-Number.MAX_VALUE) * 2;
+	var secondBiggestNumber = (-Number.MAX_VALUE) * 2;
 	
 
 	var secondLargest = function(str){
@@ -13,10 +12,10 @@ window.onload = function(){
 			if (submittedNumber > biggestNumber) {
 				secondBiggestNumber = biggestNumber;
 				biggestNumber = submittedNumber;
-			}
+			} 
 			else {
-				secondBiggestNumber = (lastNumber > secondBiggestNumber) ? lastNumber : secondBiggestNumber;
-				lastNumber = submittedNumber;
+				secondBiggestNumber = (submittedNumber > secondBiggestNumber) ? submittedNumber : secondBiggestNumber;
+				
 			}
 			count += 1;
 			return [false, "Mata in " + (10 - count) + " nummer till."];
